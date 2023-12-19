@@ -3,24 +3,15 @@ package com.example.layeredarchitecture.dao;
 import com.example.layeredarchitecture.db.DBConnection;
 import com.example.layeredarchitecture.model.ItemDTO;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 
 public interface ItemDAO {
-     String genarateNewId() throws SQLException, ClassNotFoundException ;
-
-     ArrayList<ItemDTO> getAllItem() throws SQLException, ClassNotFoundException ;
-
-     boolean saveItem(String code, String description, BigDecimal unitPrice, int qtyOnHand) throws SQLException, ClassNotFoundException ;
-
-     boolean updateItem(ItemDTO dto) throws SQLException, ClassNotFoundException ;
-
-     boolean deleteItem(String code) throws SQLException, ClassNotFoundException ;
-
-      boolean existItem(String code) throws SQLException, ClassNotFoundException ;
-
-     ItemDTO findItemByCode(String newItemCode) throws SQLException, ClassNotFoundException;
-
-
+     public ArrayList<ItemDTO> getAllItems() throws SQLException, ClassNotFoundException;
+     public boolean saveItem(ItemDTO itemDTO) throws SQLException, ClassNotFoundException;
+     public boolean deleteItem(String code) throws SQLException, ClassNotFoundException;
+     public boolean update(ItemDTO itemDTO) throws SQLException, ClassNotFoundException;
+     public boolean existItem(String code) throws SQLException, ClassNotFoundException;
+     public String genarateId() throws SQLException, ClassNotFoundException;
+     public ItemDTO searchItem(String code) throws SQLException, ClassNotFoundException;
 }
