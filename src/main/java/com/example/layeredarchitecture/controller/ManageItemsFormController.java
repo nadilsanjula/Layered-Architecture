@@ -1,11 +1,8 @@
 package com.example.layeredarchitecture.controller;
 
-import com.example.layeredarchitecture.dao.CustomerDAOImpl;
+import com.example.layeredarchitecture.dao.ItemDAO;
 import com.example.layeredarchitecture.dao.ItemDAOImpl;
-import com.example.layeredarchitecture.db.DBConnection;
-import com.example.layeredarchitecture.model.CustomerDTO;
 import com.example.layeredarchitecture.model.ItemDTO;
-import com.example.layeredarchitecture.view.tdm.CustomerTM;
 import com.example.layeredarchitecture.view.tdm.ItemTM;
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
@@ -138,7 +135,7 @@ public class ManageItemsFormController {
                 new Alert(Alert.AlertType.ERROR, "There is no such item associated with the id " + code).show();
             }
 
-            ItemDAOImpl itemDAO = new ItemDAOImpl();
+            ItemDAO itemDAO = new ItemDAOImpl();
             boolean isDelete = itemDAO.deleteItem(code);
             if (isDelete){
                 new Alert(Alert.AlertType.CONFIRMATION).show();
@@ -184,7 +181,7 @@ public class ManageItemsFormController {
                 }
                 //Save Item
 
-                ItemDAOImpl itemDAO = new ItemDAOImpl();
+                ItemDAO itemDAO = new ItemDAOImpl();
                 ItemDTO itemDTO  = new ItemDTO(code,description,unitPrice,qtyOnHand);
                 boolean isSaved = itemDAO.saveItem(code,description,unitPrice,qtyOnHand);
 
@@ -206,9 +203,9 @@ public class ManageItemsFormController {
                 }
                 /*Update Item*/
 
-                ItemDAOImpl itemDAO = new ItemDAOImpl();
-                ItemDTO itemDTO = new ItemDTO(code,description,unitPrice,qtyOnHand);
-                boolean isUpdate = itemDAO.updateItem(code,description,unitPrice,qtyOnHand);
+                ItemDAO itemDAO = new ItemDAOImpl();
+                ItemDTO dto = new ItemDTO(code,description,unitPrice,qtyOnHand);
+                boolean isUpdate = itemDAO.updateItem(dto);
                 if (isUpdate){
                     tblItems.getItems().add(new ItemTM(code,description,unitPrice,qtyOnHand));
 
@@ -242,7 +239,7 @@ public class ManageItemsFormController {
     private String generateNewId() {
 
             try {
-                return   ItemDAOImpl.genarateNewId();
+                return   itemDAOs.genarateNewId();
 
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
