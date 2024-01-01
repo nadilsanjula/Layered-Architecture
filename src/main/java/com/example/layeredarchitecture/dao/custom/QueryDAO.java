@@ -1,6 +1,6 @@
 package com.example.layeredarchitecture.dao.custom;
 
-import com.example.layeredarchitecture.model.Summary;
+import com.example.layeredarchitecture.dto.Summary;
 
 import java.sql.SQLException;
 

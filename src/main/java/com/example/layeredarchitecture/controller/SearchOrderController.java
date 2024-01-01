@@ -2,7 +2,7 @@ package com.example.layeredarchitecture.controller;
 
 import com.example.layeredarchitecture.dao.custom.QueryDAO;
 import com.example.layeredarchitecture.dao.custom.impl.QueryDAOImpl;
-import com.example.layeredarchitecture.model.Summary;
+import com.example.layeredarchitecture.dto.Summary;
 import com.example.layeredarchitecture.view.tdm.SummaryTM;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
